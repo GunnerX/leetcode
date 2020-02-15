@@ -15,11 +15,25 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        i,j = l1,l2
-        if not i and not j:
-            return ListNode(None)
-        while j
+        head = ListNode(-1)
+        c = head
+        while l1 and l2:        # 注意and 还是 or !!!
+            if l1.val <= l2.val:
+                c.next = l1
+                l1 = l1.next
+            else:
+                c.next = l2
+                l2 = l2.next
+            c = c.next
+
+        if l1 is None:
+            c.next = l2
+        if l2 is None:
+            c.next = l1
+
+        return head.next
 
 
