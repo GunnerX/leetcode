@@ -39,14 +39,3 @@ class Solution:
         if c:   # i,j都遍历完后，若仍有进位则再指向一个值为1的结点
             p.next = ListNode(1)
         return head.next
-
-
-
-
-
-
-
-
-
-
-
