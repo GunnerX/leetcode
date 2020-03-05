@@ -40,13 +40,13 @@ class Solution:
 
         return root
 
-    # 非递归
+    # 非递归 迭代法
     def invertTree2(self, root: TreeNode) -> TreeNode:
         if not root:    # 根节点为空直接返回None
             return None
-        queue = [root]     # 用一个队列存储需要翻转的结点
+        queue = [root]     # 用一个队列存储所有左右子树还没翻转过的结点
         while queue:    # 若队列非空
-            node = queue.pop(0)     # 第一个元素出队
+            node = queue.pop(0)     # 第一个节点元素出队
             node.left, node.right = node.right, node.left   # 交换当前节点的左右子树
             if node.left:   # 若当前节点的左右子树非空，将其加入队列中
                 queue.append(node.left)
