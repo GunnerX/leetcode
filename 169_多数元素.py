@@ -16,14 +16,22 @@
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        n = len(nums)
-        if n == 1:      # 特解，只有一个元素时直接返回
-            return nums[0]
-        hash = {}
+         # major为当前还无法删除的元素，count为其个数。
+         # major初值必须为nums中没有的元素。或者也可major=nums[0],遍历nums[1:]
+        major, count = 0, 0
         for num in nums:
-            if hash.get(num) == None:
-                hash[num] = 1
-            else:
-                hash[num] += 1
-                if hash[num] > n/2:
-                    return num
+            if not count: # 如果当前count为0，说明当前没有无法删除的元素，则更新major，count
+                major = num
+                count += 1
+            else:   # 若当前count不为0,即存在无法删除的元素
+                if num == major:    # 若num==major，说明两者相等，仍无法删除，count增加
+                    count += 1
+                else:       # 否则说明当前num可以抵消掉一个major，count减1
+                    count -= 1
+        return  major
+
+
+
+
+
+
