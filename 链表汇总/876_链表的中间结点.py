@@ -24,16 +24,11 @@
 
 class Solution:
     def middleNode(self, head: ListNode) -> ListNode:
-        if not head or not head.next:
-            return head
-        left, right = head, head
-        while True:
-            if not right.next:
-                return left
-            if not right.next.next:
-                return left.next
-            right = right.next.next
-            left = left.next
+        quick, slow = head, head
+        while quick and quick.next:
+            quick = quick.next.next
+            slow = slow.next
+        return slow
 
 
 
