@@ -20,13 +20,10 @@ class ListNode:
 
 class Solution:
     def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
-        if not head:
-            return None
         left, right = head, head
         for i in range(k):
             right = right.next
         while right:
             left = left.next
             right = right.next
-
         return left
