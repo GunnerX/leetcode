@@ -20,6 +20,7 @@ class ListNode:
         self.next = None
 
 class Solution:
+    # 遍历，有重复就删除的做法
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
@@ -34,3 +35,17 @@ class Solution:
             else:
                 node = node.next
         return dummy.next
+
+
+    # 类似数组的做法，双指针改变值val
+    def deleteDuplicates1(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        left, right = head, head
+        while right:
+            if left.val != right.val:
+                left = left.next
+                left.val = right.val
+            right = right.next
+        left.next = None
+        return head
