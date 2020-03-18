@@ -20,8 +20,12 @@
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        sum = 0
-        for digit in digits:
-            sum = sum * 10 + digit
-        sum += 1
-        return [int(i) for i in str(sum)]
+        for i in range(len(digits)-1, -1, -1):
+            if digits[i] != 9:
+                digits[i] += 1
+                return digits   # 只要digits不全为9，一定会从这里返回
+            digits[i] = 0
+        digits[0] = 1   # 执行到这一步，说明全部都是9，所以需要进位一个1
+        digits.append(0)
+        return digits
+
