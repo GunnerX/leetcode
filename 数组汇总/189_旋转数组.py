@@ -29,3 +29,4 @@ class Solution:
         swap(0, n - k - 1)  # 三次旋转
         swap(n - k, n - 1)
         swap(0, n - 1)
+
